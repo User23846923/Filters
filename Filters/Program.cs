@@ -29,11 +29,15 @@ namespace Filters
                 new ContainsCharacterFilter('t'),
             });
 
+            var reader = new LineReader(args[0]);
+            var tokenizer = new Tokenizer(reader);
+
             var processor = new Processor();
-            processor.ProcessFile(
-                args[0],
-                filterList,
-                Console.Write);
+            var separator = "";
+            foreach (var token in tokenizer.GetNextToken())
+            {
+                processor.ProcessToken(token, filterList, Console.Write, ref separator);
+            }
         }
     }
 }

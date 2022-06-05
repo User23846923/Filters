@@ -9,7 +9,7 @@ namespace Filters.Tests.Services
         public void NextLineWorks()
         {
             // Assemble
-            var expected = new string[] { "Ant", "Bat", "Cat", "Dog" };
+            var expected = new [] { "Ant", "Bat", "Cat", "Dog" };
 
             // Act
             var reader = new LineReader("LineReaderTestInput.txt");

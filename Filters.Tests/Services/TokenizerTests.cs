@@ -16,7 +16,7 @@ namespace Filters.Tests.Services
                 .Setup(r => r.GetNextLine())
                 .Returns(MockLinesSingleToken());
 
-            var expected = new string[] { "Ant" };
+            var expected = new [] { "Ant" };
 
             var tokenizer = new Tokenizer(mockReader.Object);
 
@@ -39,7 +39,7 @@ namespace Filters.Tests.Services
                 .Setup(r => r.GetNextLine())
                 .Returns(MockLinesSingleTokenTrailingWhitespace());
 
-            var expected = new string[] { "Ant" };
+            var expected = new [] { "Ant" };
 
             var tokenizer = new Tokenizer(mockReader.Object);
 
@@ -62,7 +62,7 @@ namespace Filters.Tests.Services
                 .Setup(r => r.GetNextLine())
                 .Returns(MockLinesSingleTokenTrailingPunctuation());
 
-            var expected = new string[] { "Ant", "," };
+            var expected = new [] { "Ant", "," };
 
             var tokenizer = new Tokenizer(mockReader.Object);
 
@@ -85,7 +85,7 @@ namespace Filters.Tests.Services
                 .Setup(r => r.GetNextLine())
                 .Returns(MockLinesSingleTokenSinglePunctuation());
 
-            var expected = new string[] { "," };
+            var expected = new [] { "," };
 
             var tokenizer = new Tokenizer(mockReader.Object);
 
@@ -108,7 +108,7 @@ namespace Filters.Tests.Services
                 .Setup(r => r.GetNextLine())
                 .Returns(MockLinesSingleTokenConsecutivePunctuation());
 
-            var expected = new string[] { ",", ":" };
+            var expected = new [] { ",", ":" };
 
             var tokenizer = new Tokenizer(mockReader.Object);
 
@@ -131,7 +131,7 @@ namespace Filters.Tests.Services
                 .Setup(r => r.GetNextLine())
                 .Returns(MockLinesSingleLine());
 
-            var expected = new string[] { "Ant", "Bat" };
+            var expected = new [] { "Ant", "Bat" };
 
             var tokenizer = new Tokenizer(mockReader.Object);
 
@@ -154,7 +154,7 @@ namespace Filters.Tests.Services
                 .Setup(r => r.GetNextLine())
                 .Returns(MockLinesMultiLine());
 
-            var expected = new string[] { "Ant", "Bat", "Cat", "Dog" };
+            var expected = new [] { "Ant", "Bat", "Cat", "Dog" };
 
             var tokenizer = new Tokenizer(mockReader.Object);
 
