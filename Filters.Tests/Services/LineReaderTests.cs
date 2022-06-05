@@ -1,7 +1,7 @@
 using Filters.Services;
 using NUnit.Framework;
 
-namespace Filters.Tests
+namespace Filters.Tests.Services
 {
     public class LineReaderTests
     {

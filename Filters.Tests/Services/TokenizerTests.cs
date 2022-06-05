@@ -3,7 +3,7 @@ using Moq;
 using NUnit.Framework;
 using System.Collections.Generic;
 
-namespace Filters.Tests
+namespace Filters.Tests.Services
 {
     public class TokenizerTests
     {
