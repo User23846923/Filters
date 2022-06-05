@@ -2,7 +2,7 @@
 {
     public class VowelInTheMiddleFilter : IWordFilter
     {
-        private readonly List<char> _vowels = new List<char> { 'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U' };
+        private readonly List<char> _vowels = new() { 'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U' };
 
         /// <summary>
         /// Word contains a vowel in the centre 1 or 2 characters
