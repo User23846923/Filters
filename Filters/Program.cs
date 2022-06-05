@@ -7,7 +7,7 @@ namespace Filters
     {
         private static void Main(string[] args)
         {
-            var seperator = "";
+            //var seperator = "";
 
             var filterList = new FilterList(new List<IFilter> {
                 new LengthFilter(4),
@@ -22,14 +22,14 @@ namespace Filters
                     break;
                 }
 
-                if (filterList.ShouldFilterOut(token))
+                if (token.Length > 1 && filterList.ShouldFilterOut(token))
                 {
                     continue;
                 }
 
-                Console.Write(seperator);
-                Console.Write(token);
-                seperator = " ";
+                //Console.Write(seperator);
+                Console.WriteLine(token);
+                //seperator = " ";
             }
         }
     }

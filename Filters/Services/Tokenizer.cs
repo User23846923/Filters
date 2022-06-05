@@ -1,4 +1,6 @@
-﻿namespace Filters.Services
+﻿using System.Text;
+
+namespace Filters.Services
 {
     public class Tokenizer : ITokenizer
     {
@@ -19,10 +21,22 @@
                     break;
                 }
 
-                string[]? tokens = line.Split(' ');
-                foreach (string? token in tokens)
+                var sb = new StringBuilder();
+                foreach (var c in line)
                 {
-                    yield return token;
+                    if (Char.IsPunctuation(c))
+                    {
+                        yield return c.ToString();
+                    }
+                    else if (Char.IsWhiteSpace(c))
+                    {
+                        yield return sb.ToString();
+                        sb = new StringBuilder();
+                    }
+                    else
+                    {
+                        sb.Append(c);
+                    }
                 }
             }
         }
