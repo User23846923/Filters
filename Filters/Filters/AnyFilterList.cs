@@ -22,15 +22,9 @@
         /// </returns>
         public bool WordMatchesCondition(string word)
         {
-            foreach (var filter in _filters)
-            {
-                if (filter.WordMatchesCondition(word))
-                {
-                    return true;
-                }
-            }
-
-            return false;
+            return _filters
+                .Select(f => f.WordMatchesCondition(word))
+                .Any(x => x);
         }
     }
 }
