@@ -12,7 +12,7 @@ namespace Filters.Tests
             var expected = new string[] { "Ant", "Bat", "Cat", "Dog" };
 
             // Act
-            var reader = new LineReader("TestInput.txt");
+            var reader = new LineReader("LineReaderTestInput.txt");
 
             // Assert
             var expectedIndex = 0;
