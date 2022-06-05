@@ -18,11 +18,11 @@
             }
         }
 
-        public IEnumerable<string?> GetNextLine()
+        public IEnumerable<string> GetNextLine()
         {
-            while (_stream.Peek() != -1)
+            while (!_stream.EndOfStream)
             {
-                yield return _stream.ReadLine();
+                yield return _stream.ReadLine() ?? throw new Exception("Unexpected end of file");
             }
         }
     }

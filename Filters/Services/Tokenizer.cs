@@ -11,16 +11,10 @@ namespace Filters.Services
             _lineReader = lineReader;
         }
 
-        public IEnumerable<string?> GetNextToken()
+        public IEnumerable<string> GetNextToken()
         {
-            foreach (string? line in _lineReader.GetNextLine())
+            foreach (var line in _lineReader.GetNextLine())
             {
-                if (line == null)
-                {
-                    yield return null;
-                    break;
-                }
-
                 var sb = new StringBuilder();
                 foreach (var c in line)
                 {

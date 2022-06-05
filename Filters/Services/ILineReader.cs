@@ -8,6 +8,6 @@
         /// <summary>
         /// Gets the next line.
         /// </summary>
-        public IEnumerable<string?> GetNextLine();
+        public IEnumerable<string> GetNextLine();
     }
 }

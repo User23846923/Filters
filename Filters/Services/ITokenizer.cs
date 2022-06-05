@@ -8,6 +8,6 @@
         /// <summary>
         /// Gets the next token.
         /// </summary>
-        public IEnumerable<string?> GetNextToken();
+        public IEnumerable<string> GetNextToken();
     }
 }
