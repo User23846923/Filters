@@ -23,21 +23,17 @@ namespace Filters
                 return;
             }
 
+            var reader = new LineReader(args[0]);
+            var tokenizer = new Tokenizer(reader);
+
             var filterList = new AnyFilterList(new List<IWordFilter> {
                 new VowelInTheMiddleFilter(),
                 new LengthLessThanFilter(3),
                 new ContainsCharacterFilter('t'),
             });
 
-            var reader = new LineReader(args[0]);
-            var tokenizer = new Tokenizer(reader);
-
-            var processor = new Processor();
-            var separator = "";
-            foreach (var token in tokenizer.GetNextToken())
-            {
-                processor.ProcessToken(token, filterList, Console.Write, ref separator);
-            }
+            var processor = new Processor(tokenizer, filterList);
+            processor.ProcessTokens(Console.Write);
         }
     }
 }
