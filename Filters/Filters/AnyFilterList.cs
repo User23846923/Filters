@@ -3,7 +3,7 @@
     /// <summary>
     /// A list of filters combined with "OR"
     /// </summary>
-    /// <seealso cref="Filters.Filters.IWordFilter" />
+    /// <seealso cref="Filters.IWordFilter" />
     public class AnyFilterList : IWordFilter
     {
         private readonly List<IWordFilter> _filters;

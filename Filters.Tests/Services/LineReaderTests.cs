@@ -1,7 +1,7 @@
 using Filters.Services;
 using NUnit.Framework;
 
-namespace Filters.Tests
+namespace Filters.Tests.Services
 {
     public class LineReaderTests
     {
@@ -9,7 +9,7 @@ namespace Filters.Tests
         public void NextLineWorks()
         {
             // Assemble
-            var expected = new string[] { "Ant", "Bat", "Cat", "Dog" };
+            var expected = new [] { "Ant", "Bat", "Cat", "Dog" };
 
             // Act
             var reader = new LineReader("LineReaderTestInput.txt");

@@ -12,10 +12,7 @@
         public void Dispose()
         {
             GC.SuppressFinalize(this);
-            if (_stream != null)
-            {
-                _stream.Dispose();
-            }
+            _stream.Dispose();
         }
 
         public IEnumerable<string> GetNextLine()

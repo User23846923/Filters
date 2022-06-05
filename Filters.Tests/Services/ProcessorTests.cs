@@ -4,7 +4,7 @@ using NUnit.Framework;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Filters.Tests
+namespace Filters.Tests.Services
 {
     public class ProcessorTests
     {
@@ -26,7 +26,7 @@ namespace Filters.Tests
             }
 
             // Assert
-            Assert.AreEqual(", 123:! 1234",  sb.ToString());
+            Assert.AreEqual(", 123:! 1234", sb.ToString());
         }
     }
 }

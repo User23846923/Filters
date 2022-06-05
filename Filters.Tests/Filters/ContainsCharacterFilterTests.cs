@@ -1,7 +1,7 @@
 using Filters.Filters;
 using NUnit.Framework;
 
-namespace Filters.Tests
+namespace Filters.Tests.Filters
 {
     public class ContainsCharacterFilterTests
     {
