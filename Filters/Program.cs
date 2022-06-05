@@ -31,9 +31,9 @@ namespace Filters
 
             var processor = new Processor();
             processor.ProcessFile(
-                args[0], 
-                filterList, 
-                (s) => Console.Write(s));
+                args[0],
+                filterList,
+                Console.Write);
         }
     }
 }

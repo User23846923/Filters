@@ -15,7 +15,7 @@
         {
             return word.Length % 2 != 0
                 ? _vowels.Contains(word[word.Length / 2])
-                : _vowels.Contains(word[(word.Length / 2) -1]) || _vowels.Contains(word[word.Length / 2]);
+                : _vowels.Contains(word[(word.Length / 2) - 1]) || _vowels.Contains(word[word.Length / 2]);
         }
     }
 }

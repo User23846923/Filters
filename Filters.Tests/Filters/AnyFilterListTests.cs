@@ -3,7 +3,7 @@ using Moq;
 using NUnit.Framework;
 using System.Collections.Generic;
 
-namespace Filters.Tests
+namespace Filters.Tests.Filters
 {
     public class AnyFilterListTests
     {
@@ -22,9 +22,9 @@ namespace Filters.Tests
                 .Returns(false);
 
             var filterList = new AnyFilterList(new List<IWordFilter>
-            { 
-                mockFilter1.Object, 
-                mockFilter2.Object 
+            {
+                mockFilter1.Object,
+                mockFilter2.Object
             });
 
             // Act

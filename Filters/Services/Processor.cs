@@ -1,5 +1,4 @@
 ﻿using Filters.Filters;
-using Filters.Services;
 
 namespace Filters.Services
 {
