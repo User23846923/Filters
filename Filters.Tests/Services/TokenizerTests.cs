@@ -77,6 +77,52 @@ namespace Filters.Tests
         }
 
         [Test]
+        public void GetNextTokenWorksSinglePunctuation()
+        {
+            // Assemble
+            var mockReader = new Mock<ILineReader>();
+            mockReader
+                .Setup(r => r.GetNextLine())
+                .Returns(MockLinesSingleTokenSinglePunctuation());
+
+            var expected = new string[] { "," };
+
+            var tokenizer = new Tokenizer(mockReader.Object);
+
+            // Act
+            var expectedIndex = 0;
+            foreach (var token in tokenizer.GetNextToken())
+            {
+                // Assert
+                Assert.AreEqual(token, expected[expectedIndex++]);
+            }
+            Assert.AreEqual(expected.Length, expectedIndex);
+        }
+
+        [Test]
+        public void GetNextTokenWorksConsecutivePunctuation()
+        {
+            // Assemble
+            var mockReader = new Mock<ILineReader>();
+            mockReader
+                .Setup(r => r.GetNextLine())
+                .Returns(MockLinesSingleTokenConsecutivePunctuation());
+
+            var expected = new string[] { ",", ":" };
+
+            var tokenizer = new Tokenizer(mockReader.Object);
+
+            // Act
+            var expectedIndex = 0;
+            foreach (var token in tokenizer.GetNextToken())
+            {
+                // Assert
+                Assert.AreEqual(token, expected[expectedIndex++]);
+            }
+            Assert.AreEqual(expected.Length, expectedIndex);
+        }
+
+        [Test]
         public void GetNextTokenWorksSingleLine()
         {
             // Assemble
@@ -135,6 +181,16 @@ namespace Filters.Tests
         private static IEnumerable<string> MockLinesSingleTokenTrailingPunctuation()
         {
             yield return "Ant,";
+        }
+
+        private static IEnumerable<string> MockLinesSingleTokenSinglePunctuation()
+        {
+            yield return ",";
+        }
+
+        private static IEnumerable<string> MockLinesSingleTokenConsecutivePunctuation()
+        {
+            yield return ",:";
         }
 
         private static IEnumerable<string> MockLinesSingleLine()
