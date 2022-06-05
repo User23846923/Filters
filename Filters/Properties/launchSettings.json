@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Filters": {
+      "commandName": "Project",
+      "commandLineArgs": "Input.txt"
+    }
+  }
+}
