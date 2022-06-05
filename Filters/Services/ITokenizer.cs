@@ -1,7 +1,13 @@
 ﻿namespace Filters.Services
 {
+    /// <summary>
+    /// interface for a Tokenizer 
+    /// </summary>
     public interface ITokenizer
     {
-        public IEnumerable<string?> NextToken();
+        /// <summary>
+        /// Gets the next token.
+        /// </summary>
+        public IEnumerable<string?> GetNextToken();
     }
 }
