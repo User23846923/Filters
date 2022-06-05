@@ -4,9 +4,27 @@ namespace Filters.Services
 {
     public class Processor : IProcessor
     {
-        public void ProcessToken(
+        private readonly ITokenizer _tokenizer;
+        private readonly IWordFilter _wordFilter;
+
+        public Processor(ITokenizer tokenizer, IWordFilter wordFilter)
+        {
+            _tokenizer = tokenizer;
+            _wordFilter = wordFilter;
+        }
+
+        public void ProcessTokens(Action<string> outputFn)
+        {
+            var separator = "";
+            foreach (var token in _tokenizer.GetNextToken())
+            {
+                ProcessToken(token, _wordFilter, outputFn, ref separator);
+            }
+        }
+
+        private static void ProcessToken(
             string token,
-            AnyFilterList filterList,
+            IWordFilter wordFilter,
             Action<string> outputFn,
             ref string separator)
         {
@@ -17,7 +35,7 @@ namespace Filters.Services
                 return;
             }
 
-            if (filterList.WordMatchesCondition(token))
+            if (wordFilter.WordMatchesCondition(token))
             {
                 return;
             }

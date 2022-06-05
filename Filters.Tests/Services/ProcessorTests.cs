@@ -1,5 +1,6 @@
 using Filters.Filters;
 using Filters.Services;
+using Moq;
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.Text;
@@ -9,24 +10,36 @@ namespace Filters.Tests.Services
     public class ProcessorTests
     {
         [Test]
-        public void ProcessTokenLoopWorks()
+        public void ProcessTokensWorks()
         {
             // Assemble
+            var mockTokenizer = new Mock<ITokenizer>();
+            mockTokenizer
+                .Setup(x => x.GetNextToken())
+                .Returns(GetMockTokens());
+
             var filterList = new AnyFilterList(new List<IWordFilter> {
                 new LengthLessThanFilter(3),
             });
-            var processor = new Processor();
+            var processor = new Processor(mockTokenizer.Object, filterList);
 
             // Act
-            var separator = "";
             var sb = new StringBuilder();
-            foreach (var token in new[] { "ab", ",", "123", ":", "xy", "!", "1234" })
-            {
-                processor.ProcessToken(token, filterList, (s) => sb.Append(s), ref separator);
-            }
+            processor.ProcessTokens((s) => sb.Append(s));
 
             // Assert
             Assert.AreEqual(", 123:! 1234", sb.ToString());
+        }
+
+        private static IEnumerable<string> GetMockTokens()
+        {
+            yield return "ab";
+            yield return ",";
+            yield return "123";
+            yield return ":";
+            yield return "xy";
+            yield return "!";
+            yield return "1234";
         }
     }
 }
