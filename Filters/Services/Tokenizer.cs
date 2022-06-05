@@ -11,9 +11,9 @@ namespace Filters.Services
             _lineReader = lineReader;
         }
 
-        public IEnumerable<string?> NextToken()
+        public IEnumerable<string?> GetNextToken()
         {
-            foreach (string? line in _lineReader.NextLine())
+            foreach (string? line in _lineReader.GetNextLine())
             {
                 if (line == null)
                 {
@@ -26,17 +26,31 @@ namespace Filters.Services
                 {
                     if (Char.IsPunctuation(c))
                     {
+                        if (sb.Length > 0)
+                        {
+                            yield return sb.ToString();
+                            sb = new StringBuilder();
+                        }
                         yield return c.ToString();
                     }
                     else if (Char.IsWhiteSpace(c))
                     {
-                        yield return sb.ToString();
+                        if (sb.Length > 0)
+                        {
+                            yield return sb.ToString();
+                            sb = new StringBuilder();
+                        }
                         sb = new StringBuilder();
                     }
                     else
                     {
                         sb.Append(c);
                     }
+                }
+
+                if (sb.Length > 0)
+                {
+                    yield return sb.ToString();
                 }
             }
         }
